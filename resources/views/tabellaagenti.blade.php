@@ -8,7 +8,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" >
+                Laravel BackOffice Admin
+            </a>
+            <div class="topnav" id="myTopnav">
+                <a href="{{url('tabellacustomers')}}">Customers</a>
+                <a href="{{url('tabellaagenti')}}">Agente</a>
 
+            </div>
+        </div>
+
+    </div>
+</nav>
 <nav class="navbar navbar-light bg-faded">
     <form  class="form-inline">
         <input name="search_text" id="search_text" class="form-control  mr-sm-2" type="text" >
@@ -28,7 +42,7 @@
             </div>
 
             <div class="modal-body">
-                <form id="frmTasks" method="post" action="/crudinsert" name="frmTasks" class="form-horizontal" novalidate="">
+                <form id="frmTasks" method="post" action="/crudinsert2" name="frmTasks" class="form-horizontal" novalidate="">
 
                     {{csrf_field()}}
                     <div class="form-group error">
@@ -51,12 +65,7 @@
                             <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-3 control-label">Cliente Associato</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="clienteassociato" name="clienteassociato" placeholder="Cliente Associato" value="">
-                        </div>
-                    </div>
+
 
 
                     <div class="modal-footer">
@@ -73,9 +82,22 @@
 <table class="table">
     <thead>
     <tr>
-        <th>Codice Agente</th>
-        <th>Ragione sociale</th>
-        <th>Email</th>
+        <th>Codice Agente
+            <a href="{{url('codag/asc')}}">Asc</a>
+            <a href="{{url('codag/desc')}}">Desc</a>
+            <a href="{{url('tabellaagenti')}}">Reset</a>
+        </th>
+        <th>Ragione sociale
+            <a href="{{url('ragsoc/asc')}}">Asc</a>
+            <a href="{{url('ragsoc/desc')}}">Desc</a>
+            <a href="{{url('tabellaagenti')}}">Reset</a>
+        </th>
+        <th>Email
+            <a href="{{url('emailag/asc')}}">Asc</a>
+            <a href="{{url('emailag/desc')}}">Desc</a>
+            <a href="{{url('tabellaagenti')}}">Reset</a>
+
+        </th>
         <th>Cliente Associato</th>
         <th>Opzioni</th>
     </tr>
