@@ -40,7 +40,9 @@ Route::get('searchcustomers','Controller@searchcustomers');
 
 Route::get('searchagenti','Controller@searchagenti');
 
-/********FILTERS*******/
+Route::post('/crudinsert2','Controller@addag');
+
+/********FILTERS CUSTOMERS*******/
 
 Route::get('name/asc', 'Controller@nameasc');
 
@@ -53,3 +55,17 @@ Route::get('email/asc', 'Controller@emailasc');
 Route::get('agente/desc', 'Controller@agentedesc');
 
 Route::get('agente/asc', 'Controller@agenteasc');
+
+/********FILTERS AGENTI*******/
+
+Route::get('codag/asc', 'Controller@codeagasc');
+
+Route::get('codag/desc', 'Controller@codeagdesc');
+
+Route::get('ragsoc/asc', 'Controller@ragsocasc');
+
+Route::get('ragsoc/desc', 'Controller@ragsocdesc');
+
+Route::get('emailag/asc', 'Controller@emailagasc');
+
+Route::get('emailag/desc', 'Controller@emailagdesc');
