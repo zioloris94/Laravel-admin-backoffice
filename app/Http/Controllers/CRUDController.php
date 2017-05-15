@@ -60,14 +60,13 @@ class CRUDController extends BaseController{
         $name = $request->edit_name;
         $email = $request->edit_email;
 
-
-        DB::table('users')
-            ->where('id',$id)
+        DB::table('customers')
+            ->where('customers_lastname',$id)
             ->update
-            (['name' => $name, 'email' => $email]
+            (['customers_lastname' => $name, 'customers_email_address' => $email]
         );
 
-        $data['data'] = DB::table('users')->paginate(2);
+        $data['data'] = DB::table('customers')->paginate(10);
 
         return view('tabellacustomers', $data);
         $data -> save();
@@ -75,6 +74,27 @@ class CRUDController extends BaseController{
             ->with('success','Record Updated successfully.');
     }
 
+    public function updateag(Request $request)
+    {
+
+        $id = $request->edit_id;
+        $codag = $request->codiceagente;
+        $ragsoc = $request->ragionesociale;
+        $email = $request->email ;
+
+        DB::table('agenti')
+            ->where('cod_agente',$id)
+            ->update
+            (['cod_agente' => $codag, 'des_ragsoc' => $ragsoc,'des_email' =>$email]
+            );
+
+        $data['data'] = DB::table('agenti')->paginate(4);
+
+        return view('tabellaagenti', $data);
+        $data -> save();
+        return back()
+            ->with('success','Record Updated successfully.');
+    }
 
     public function view(Request $request)
     {
@@ -93,6 +113,38 @@ class CRUDController extends BaseController{
 
         }
     }
+    public function viewag(Request $request)
+    {
+        if($request->ajax()){
+
+
+            $id = $request-> id;
+            $info=DB::table('agenti')->where(['admin_id'=>$id])->value('cod_agente','des_ragsoc');
+
+            //$info = User::find($id);
+            //echo json_decode($info);
+            return response()->json($info);
+            //$strFromArr = serialize($info);
+            //return $info;
+
+
+        }
+    }
+
+
+    public function deleteag(Request $request)
+    {
+        //$id = $request ->customers_id;
+
+        $id = $request -> id;
+        $data=DB::table('agenti')->where(['admin_id'=>$id])->delete();
+        //$data = User::find($id);
+        //$response = $data -> delete();
+        if($data)
+            echo "Record Deleted successfully.";
+
+    }
+
 
 
 }

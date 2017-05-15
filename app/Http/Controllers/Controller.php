@@ -28,7 +28,7 @@ class Controller extends BaseController
     public function getDataAgenti()
     {
 
-        $data['data'] = DB::table('mesa_agenti')->paginate(4);
+        $data['data'] = DB::table('agenti')->paginate(4);
         return view('tabellaagenti', $data);
     }
 
@@ -56,7 +56,7 @@ class Controller extends BaseController
     public function searchagenti(Request $request){
 
         $output="";
-        $customers=DB::table('mesa_agenti')->where('cod_agente','LIKE','%'.$request->search.'%')
+        $customers=DB::table('agenti')->where('cod_agente','LIKE','%'.$request->search.'%')
                                            ->orWhere('des_ragsoc','LIKE','%'.$request->search.'%')->get();
 
         if($customers){
@@ -81,16 +81,16 @@ class Controller extends BaseController
         $email = $req->input('email');
 
 
-        $checkLogin = DB::table('mesa_agenti')->where(['cod_agente'=>$codag,'des_ragsoc'=>$ragsoc,'des_email'=>$email])->get();
+        $checkLogin = DB::table('agenti')->where(['cod_agente'=>$codag,'des_ragsoc'=>$ragsoc,'des_email'=>$email])->get();
         if(count($checkLogin)==0) {
-            DB::table('mesa_agenti')->insert(
+            DB::table('agenti')->insert(
                 ['cod_agente'=>$codag,'des_ragsoc'=>$ragsoc,'des_email'=>$email]
             );
 
-            $data['data'] = DB::table('mesa_agenti')->paginate(4);
+            $data['data'] = DB::table('agenti')->paginate(4);
 
             return view('tabellaagenti', $data);
-            return back();
+            $data->save();
 
         }else{
 
@@ -99,6 +99,8 @@ class Controller extends BaseController
         }
 
     }
+
+
 /*****************FILTRI CUSTOMERS******/
     public function nameasc(){
 
@@ -129,27 +131,27 @@ class Controller extends BaseController
     /*****************FILTRI AGENTE******/
 
     public function codeagasc(){
-        $data['data']=DB::table('mesa_agenti')->orderBy('cod_agente','ASC')->paginate(4);
+        $data['data']=DB::table('agenti')->orderBy('cod_agente','ASC')->paginate(4);
         return view('tabellaagenti',$data);
     }
     public function codeagdesc(){
-        $data['data']=DB::table('mesa_agenti')->orderBy('cod_agente','DESC')->paginate(4);
+        $data['data']=DB::table('agenti')->orderBy('cod_agente','DESC')->paginate(4);
         return view('tabellaagenti',$data);
     }
     public function ragsocasc(){
-        $data['data']=DB::table('mesa_agenti')->orderBy('des_ragsoc','ASC')->paginate(4);
+        $data['data']=DB::table('agenti')->orderBy('des_ragsoc','ASC')->paginate(4);
         return view('tabellaagenti',$data);
     }
     public function ragsocdesc(){
-        $data['data']=DB::table('mesa_agenti')->orderBy('des_ragsoc','DESC')->paginate(4);
+        $data['data']=DB::table('agenti')->orderBy('des_ragsoc','DESC')->paginate(4);
         return view('tabellaagenti',$data);
     }
     public function emailagasc(){
-        $data['data']=DB::table('mesa_agenti')->orderBy('des_email','ASC')->paginate(4);
+        $data['data']=DB::table('agenti')->orderBy('des_email','ASC')->paginate(4);
         return view('tabellaagenti',$data);
     }
     public function emailagdesc(){
-        $data['data']=DB::table('mesa_agenti')->orderBy('des_email','DESC')->paginate(4);
+        $data['data']=DB::table('agenti')->orderBy('des_email','DESC')->paginate(4);
         return view('tabellaagenti',$data);
     }
 
