@@ -34,7 +34,7 @@ Route::post('/crudinsert','CRUDController@add');
 
 Route::post('crud/update','CRUDController@update');
 
-Route::get('crud/view', 'CRUDController@view');
+Route::post('crud/updateag','CRUDController@updateag');
 
 Route::get('searchcustomers','Controller@searchcustomers');
 
@@ -42,6 +42,11 @@ Route::get('searchagenti','Controller@searchagenti');
 
 Route::post('/crudinsert2','Controller@addag');
 
+Route::post('crud/deleteag', 'CRUDController@deleteag');
+
+Route::get('crud/viewag', 'CRUDController@viewag');
+
+Route::get('crud/view', 'CRUDController@view');
 /********FILTERS CUSTOMERS*******/
 
 Route::get('name/asc', 'Controller@nameasc');
