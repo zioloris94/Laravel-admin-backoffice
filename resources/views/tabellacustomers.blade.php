@@ -17,7 +17,7 @@
             <div class="topnav" id="myTopnav">
                 <a href="{{url('tabellacustomers')}}">Customers</a>
                 <a href="{{url('tabellaagenti')}}">Agenti</a>
-
+                <a class="pull-right" href="{{url('accesso')}}">Logout</a>
             </div>
         </div>
 
@@ -28,7 +28,7 @@
 
 <nav class="navbar navbar-light bg-faded">
     <form  class="form-inline">
-        <input  name="search_text" id="search_text" class="form-control  mr-sm-2 pull-right" type="text" >
+        <input  placeholder="Search" id="search_text" class="form-control  mr-sm-2 pull-right" type="text" >
         <div id="result" ></div>
         <button  type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#myModal">ADD</button>
     </form>
@@ -97,9 +97,7 @@
             <a href="{{url('tabellacustomers')}}">Reset</a>
         </th>
         <th>Agente
-            <a href="{{url('agente/asc')}}">Asc</a>
-            <a href="{{url('agente/desc')}}">Desc</a>
-            <a href="{{url('tabellacustomers')}}">Reset</a>
+
 
         </th>
         <th>Opzioni</th>
@@ -109,8 +107,8 @@
     @foreach($data as $task)
 
     <tr id="task{{$task->customers_id}}">
-            <td>{{$task->customers_lastname}}</td>
-            <td>{{$task->customers_email_address}}</td>
+            <td id="pippo">{{$task->customers_lastname}}</td>
+            <td id="pippo2">{{$task->customers_email_address}}</td>
             <td>Agente Smith</td>
             <td>
 

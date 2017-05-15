@@ -17,7 +17,7 @@
             <div class="topnav" id="myTopnav">
                 <a href="{{url('tabellacustomers')}}">Customers</a>
                 <a href="{{url('tabellaagenti')}}">Agenti</a>
-
+                <a class="pull-right" href="{{url('accesso')}}">Logout</a>
             </div>
         </div>
 
@@ -26,7 +26,7 @@
 <h1 align="center" >AGENTI</h1>
 <nav class="navbar navbar-light bg-faded">
     <form  class="form-inline">
-        <input  name="search_text" id="search_text" class="form-control  mr-sm-2 pull-right" type="text" >
+        <input placeholder="Search" name="search_text" id="search_text" class="form-control  mr-sm-2 pull-right" type="text" >
         <div id="result" ></div>
         <button  type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#myModal">ADD</button>
 
