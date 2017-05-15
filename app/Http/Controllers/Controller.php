@@ -90,7 +90,7 @@ class Controller extends BaseController
             $data['data'] = DB::table('agenti')->paginate(4);
 
             return view('tabellaagenti', $data);
-            $data->save();
+
 
         }else{
 

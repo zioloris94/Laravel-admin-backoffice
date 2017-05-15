@@ -23,7 +23,9 @@ class loginController extends BaseController
         if(count($checkLogin)  >0)
         {
 
-            return view('tabella', $data);
+            $data['data'] = DB::table('customers')->paginate(10);
+
+            return view('tabellacustomers', $data);
         }
         else {
             echo "Login Faield Wrong Data Passed";

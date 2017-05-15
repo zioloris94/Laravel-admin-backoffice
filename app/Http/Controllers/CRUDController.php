@@ -92,8 +92,7 @@ class CRUDController extends BaseController{
 
         return view('tabellaagenti', $data);
         $data -> save();
-        return back()
-            ->with('success','Record Updated successfully.');
+
     }
 
     public function view(Request $request)
