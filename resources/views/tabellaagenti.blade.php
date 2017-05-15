@@ -16,20 +16,23 @@
             </a>
             <div class="topnav" id="myTopnav">
                 <a href="{{url('tabellacustomers')}}">Customers</a>
-                <a href="{{url('tabellaagenti')}}">Agente</a>
+                <a href="{{url('tabellaagenti')}}">Agenti</a>
 
             </div>
         </div>
 
     </div>
 </nav>
+<h1 align="center" >AGENTI</h1>
 <nav class="navbar navbar-light bg-faded">
     <form  class="form-inline">
-        <input name="search_text" id="search_text" class="form-control  mr-sm-2" type="text" >
+        <input  name="search_text" id="search_text" class="form-control  mr-sm-2 pull-right" type="text" >
         <div id="result" ></div>
+        <button  type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#myModal">ADD</button>
+
     </form>
 </nav>
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">ADD</button>
+
 
 
 <!-- FORM AGGIUNTA UTENTI     !-->
