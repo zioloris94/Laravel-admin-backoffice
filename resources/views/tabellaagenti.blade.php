@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-3 control-label">Ragione Sociale</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="ragionesociale" name="ragionesociale" placeholder="Email" value="">
+                            <input type="text" class="form-control" id="ragionesociale" name="ragionesociale" placeholder="Ragione Sociale" value="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -124,8 +124,8 @@
 {{$data->links()}}
 
 <input type="hidden" name="hiddens" id="hiddens" value="{{url('searchagenti')}}">
-<input type="hidden" name="hidden_view" id="hidden_view" value="{{url('crud/view')}}">
-<input type="hidden" name="hidden_delete" id="hidden_delete" value="{{url('crud/delete')}}">
+<input type="hidden" name="hidden_view" id="hidden_view" value="{{url('crud/viewag')}}">
+<input type="hidden" name="hidden_delete" id="hidden_delete" value="{{url('crud/deleteag')}}">
 
 
 <div class="modal fade" id="viewModal" role="dialog">
@@ -138,13 +138,11 @@
                 <h4 class="modal-title">View</h4>
             </div>
             <div class="modal-body">
-                <p><b>First Name : </b><span id="view_fname" class="text-success"></span></p>
-                <p><b>Last Name : </b><span id="view_lname" class="text-success"></span></p>
-                <p><b>Email : </b><span id="view_email" class="text-success">bhaskar.panja@quadone.com</span></p>
+                <p><b>Codice Agente : </b><span id="view_fname" class="text-success"></span></p>
+                <p><b>Ragione Sociale : </b><span id="view_lname" class="text-success"></span></p>
+
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"></button>
-            </div>
+
         </div>
 
     </div>
@@ -162,7 +160,7 @@
                 <h4 class="modal-title">Edit</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ url('crud/update') }}" method="post">
+                <form action="{{ url('crud/updateag') }}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="form-group">
@@ -171,13 +169,12 @@
                         </div>
 
                         <label for="edit_email">Ragione Sociale :</label>
-                        <input type="email" class="form-control" id="ragionesociale" name="ragionesociale">
+                        <input type="text" class="form-control" id="ragionesociale" name="ragionesociale">
 
                         <label for="edit_email">Email :</label>
                         <input type="email" class="form-control" id="email" name="email">
 
-                        <label for="edit_email">Cliente Associato :</label>
-                        <input type="email" class="form-control" id="clienteassociato" name="clienteassociato">
+
                     </div>
 
                     <button type="submit" class="btn btn-default">Update</button>
@@ -227,10 +224,27 @@
             data: {"id":id},
             success: function(result){
                 //console.log(result);
-                $("#edit_id").val(result.id);
-                $("#name").val(result.name);
+                $("#edit_id").val(result);
+                $("#codiceagente").val(result);
+                $("#email").val(result);
+                $("#ragionesociale").val(result);
 
-                $("#email").val(result.email);
+            }
+        });
+    }
+
+    function fun_view(id)
+    {
+        var view_url = $("#hidden_view").val();
+
+        $.ajax({
+            url: view_url,
+            type:"GET",
+            data: {"id":id},
+            success: function(result){
+
+                $("#view_fname").text(result);
+                $("#view_lname").text(result);
             }
         });
     }
